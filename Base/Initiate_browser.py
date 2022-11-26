@@ -1,11 +1,17 @@
 from selenium import webdriver
 global driver
+from Library import ConfigReader
 
-def startBrower():
-    driver = webdriver.Chrome(executable_path="C:\\Users\91807\PycharmProjects\E2E_Project\chromedriver.exe")
-    driver.get("http://magento-demo.lexiconn.com/customer/account/create/")
-    return driver
+def start_browser():
+    browser=ConfigReader.readconfigData("Details", "Browser")
+    print(browser)
+    if browser=="Chrome":
+        driver=webdriver.Chrome(executable_path="chromedriver.exe")
+    elif browser=="Firefox":
+        driver = webdriver.Firefox(executable_path="geckodriver.exe")
 
-def CloseDriver():
-    driver.close()
+    driver.get(ConfigReader.readconfigData("Details", "Application_url"))
+    driver.maximize_window()
     return driver
+def close_browser():
+    driver.close_window()
