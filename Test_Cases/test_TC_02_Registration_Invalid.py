@@ -10,3 +10,4 @@ def test_Registration():
     driver.find_element(By.XPATH, ConfigReader.fetchelement("Registration", "button")).click()
     msg = driver.find_element(By.XPATH, ConfigReader.fetchelement("WelcomePage", "errormsg")).text
     assert 'Invalid login or password' in msg
+    Print(This is Krishna_new)
